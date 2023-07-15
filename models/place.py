@@ -6,7 +6,9 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Defines the content of the Place class"""
+    """
+    Defines the content of the Place class
+    """
     city_id = ""
     user_id = ""
     name = ""

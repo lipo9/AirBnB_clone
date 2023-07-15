@@ -9,6 +9,7 @@ class Place(BaseModel):
     """
     Defines the content of the Place class
     """
+
     city_id = ""
     user_id = ""
     name = ""

@@ -24,9 +24,9 @@ class BaseModel:
         else:
             f = "%Y-%m-%dT%H:%M:%S.%f"
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
+                if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(value, f)
-                if key != '__class__':
+                if key != "__class__":
                     setattr(self, key, value)
 
     def __str__(self):
@@ -58,5 +58,5 @@ class BaseModel:
                     pass
                 else:
                     new_dict[key] = values
-        new_dict['__class__'] = self.__class__.__name__
+        new_dict["__class__"] = self.__class__.__name__
         return new_dict

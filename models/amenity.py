@@ -7,4 +7,5 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """Defines the Amenity class content"""
+
     name = ""

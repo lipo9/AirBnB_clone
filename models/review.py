@@ -6,7 +6,14 @@ from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """Reviews that clients put about a place"""
+    """
+    Reviews that clients put about a place
+
+    Attributes:
+        place_id (str): The Place id
+        user_id (str): The User id
+        text (str): The text of the review
+    """
 
     place_id = ""
     user_id = ""

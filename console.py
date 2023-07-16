@@ -11,6 +11,7 @@ from models.state import State
 from models.review import Review
 from shlex import split
 import re
+import signal
 
 
 class HBNBCommand(cmd.Cmd):
@@ -189,6 +190,14 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[k] = v
         storage.save()
+
+    def preloop(self):
+        """Called before entering the command loop"""
+        signal.signal(signal.SIGINT, self.handle_interrupt)
+
+    def handle_interrupt(self, signum, frame):
+        """Command interpreter"""
+        self.is_interrupted = True
 
     def do_quit(self, line):
         """

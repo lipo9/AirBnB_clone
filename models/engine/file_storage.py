@@ -54,7 +54,12 @@ class FileStorage:
                'City': City, 'Amenity': Amenity, 'State': State,
                'Review': Review}
 
-        if os.path.exists(FileStorage.__file_path) is True:
-            with open(FileStorage.__file_path, 'r') as f:
-                for key, value in json.load(f).items():
-                    self.new(dct[value['__class__']](**value))
+        try:
+            with open(FileStorage.__file_path) as f:
+                objdict = json.load(f)
+                for o in objdict.values():
+                    cls_name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(cls_name)(**o))
+        except (FileNotFoundError, TypeError):
+            return

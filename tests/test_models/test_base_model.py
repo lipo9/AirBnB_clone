@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines unittests for models/base_model.py.
+"""Defines unittests for test_models/base_model.py.
 
 Unittest classes:
     TestBaseModel_instantiation
@@ -92,18 +92,18 @@ class TestBaseModel_save(unittest.TestCase):
     @classmethod
     def setUp(self):
         try:
-            os.rename("file.json", "tmp")
+            os.rename("../file.json", "tmp")
         except IOError:
             pass
 
     @classmethod
     def tearDown(self):
         try:
-            os.remove("file.json")
+            os.remove("../file.json")
         except IOError:
             pass
         try:
-            os.rename("tmp", "file.json")
+            os.rename("tmp", "../file.json")
         except IOError:
             pass
 

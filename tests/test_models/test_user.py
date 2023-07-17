@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines unittests for models/user.py.
+"""Defines unittests for test_models/user.py.
 
 Unittest classes:
     TestUser_instantiation
@@ -96,17 +96,17 @@ class TestUser_save(unittest.TestCase):
     @classmethod
     def setUp(self):
         try:
-            os.rename("file.json", "tmp")
+            os.rename("../file.json", "tmp")
         except IOError:
             pass
 
     def tearDown(self):
         try:
-            os.remove("file.json")
+            os.remove("../file.json")
         except IOError:
             pass
         try:
-            os.rename("tmp", "file.json")
+            os.rename("tmp", "../file.json")
         except IOError:
             pass
 

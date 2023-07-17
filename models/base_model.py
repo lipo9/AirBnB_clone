@@ -39,8 +39,10 @@ class BaseModel:
         id and the attribute dictionary
         """
         class_name = "[" + self.__class__.__name__ + "]"
-        dct = {k: v for (k, v) in self.__dict__.items() if (not v) is False}
-        return class_name + " (" + self.id + ") " + str(dct)
+        class_dict = {
+            k: v for (k, v) in self.__dict__.items() if (not v) is False
+        }
+        return class_name + " (" + self.id + ") " + str(class_dict)
 
     def save(self):
         """
@@ -54,13 +56,13 @@ class BaseModel:
         This method creates and returns a new dictionary of keys and datetimes
         """
         new_dict = {}
-        for key, values in self.__dict__.items():
+        for key, value in self.__dict__.items():
             if key == "created_at" or key == "updated_at":
-                new_dict[key] = values.strftime("%Y-%m-%dT%H:%M:%S.%f")
+                new_dict[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
             else:
-                if not values:
+                if not value:
                     pass
                 else:
-                    new_dict[key] = values
+                    new_dict[key] = value
         new_dict["__class__"] = self.__class__.__name__
         return new_dict
